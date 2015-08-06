@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import java.util.Date;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 import com.prestibanque.models.*;
@@ -15,7 +17,8 @@ public class ConseillerServiceTest {
 	private CompteCourant cc;
 	private CompteEpargne ce;
 	
-	public ConseillerServiceTest() {
+    @Before
+    public void setUp() {
 		conseiller = new Conseiller();
 		service = new ConseillerService(conseiller);
 		client = new Client("Golsing", "James", "2 rue du Soleil", "Microsystems", 123456, "01-555-1487");
@@ -26,7 +29,16 @@ public class ConseillerServiceTest {
 		client.setCompteEpargne(ce);
 		
 		conseiller.getClients().add(client);
-	}
+    }
+    
+    @After
+    public void tearUp() {
+    	service = null;
+    	conseiller = null;
+    	client = null;
+    	cc = null;
+    	ce = null;
+    }
 
 	@Test
 	public void testTransfertCourantVersEpargne() {
