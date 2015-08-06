@@ -34,6 +34,11 @@ public class Launcher {
 		
 		// cette fois, l'audit de l'agence renvoie "true" car le découvert du client n'est plus que de 4 991€ (< 5 000€)
 		System.out.println("Audit de l'agence ? " + aServ.audit());
+		
+		// un conseiller ne peut pas faire un transfert d'argent pour un client qu'il ne conseille pas
+		Client clientExterne = new Client("Gosling", "James", "2, rue du Soleil", "Île de Java", 12345, "+49.555-4874");
+		boolean transfertReussi = cServ.transfertEpargneVersCourant(clientExterne, 10);
+		System.out.println("Le transfert " + (transfertReussi ? "a" : "n'a pas") + " réussi");
 	}
 
 }

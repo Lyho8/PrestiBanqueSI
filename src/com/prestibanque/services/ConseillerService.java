@@ -15,10 +15,18 @@ public class ConseillerService {
 	}
 
 	public boolean transfertCourantVersEpargne(Client client, float montant) {
+		if (verificationClient(client) == false) {
+			return false;
+		}
+		
 		return transfertDeFond(client.getCompteCourant(), client.getCompteEpargne(), montant);
 	}
 
 	public boolean transfertEpargneVersCourant(Client client, float montant) {
+		if (verificationClient(client) == false) {
+			return false;
+		}
+		
 		return transfertDeFond(client.getCompteEpargne(), client.getCompteCourant(), montant);
 	}
 
@@ -38,6 +46,10 @@ public class ConseillerService {
 	}
 
 	public boolean gestionPatrimoine(Client client) {
+		if (verificationClient(client) == false) {
+			return false;
+		}
+		
 		float argentTotal = 0f;
 		if (client.getCompteCourant() != null) {
 			argentTotal += client.getCompteCourant().getSolde();
@@ -46,5 +58,11 @@ public class ConseillerService {
 			argentTotal += client.getCompteEpargne().getSolde();
 		}
 		return argentTotal > 500000f;
+	}
+	
+	// renvoie true si le conseiller gère ce client
+	// TODO passer ça en exception ?
+	private boolean verificationClient(Client client) {
+		return getConseiller().getClients().contains(client);
 	}
 }
