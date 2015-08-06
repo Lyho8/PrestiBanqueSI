@@ -39,6 +39,16 @@ public class Launcher {
 		Client clientExterne = new Client("Gosling", "James", "2, rue du Soleil", "Île de Java", 12345, "+49.555-4874");
 		boolean transfertReussi = cServ.transfertEpargneVersCourant(clientExterne, 10);
 		System.out.println("Le transfert " + (transfertReussi ? "a" : "n'a pas") + " réussi");
+		
+		// simulation de crédit
+		float salaire = 4000;
+		float montant = 50000;
+		int duree = 20*12;
+		float taux = 5;
+		System.out.format("Crédit d'un montant de %.02f€ avec un taux de %.02f%% pendant %d ans avec un salaire de %.02f€ par mois : ", montant, taux, duree, salaire);
+		if(!cServ.simulationCredit(salaire, montant, duree, taux))
+			System.out.print("im");
+		System.out.println("possible");
 	}
 
 }
