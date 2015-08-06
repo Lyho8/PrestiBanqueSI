@@ -41,8 +41,9 @@ public class ConseillerService {
 		return true;
 	}
 
+	// on vérifie que le tiers du salaire du client ne dépasse pas le montant de la mensualité calculée
 	public boolean simulationCredit(float salaire, float montant, int duree, float taux) {
-		return (montant * taux / 100f / duree) < salaire;
+		return (montant * (taux / 100f + 1) / duree) < (salaire / 3);
 	}
 
 	public boolean gestionPatrimoine(Client client) {
