@@ -1,5 +1,7 @@
 package com.prestibanque.models;
 
+import java.lang.ref.WeakReference;
+
 public class Client extends Personne {
 	private String adresse;
 	private String ville;
@@ -9,6 +11,7 @@ public class Client extends Personne {
 	private CompteEpargne compteEpargne;
 	private CarteBancaire carteBancaire;
 	private boolean isEntreprise;
+	private WeakReference<Conseiller> conseillerRef;
 
 	public Client(String nom, String prenom, String adresse, String ville, int code_postal, String telephone) {
 		this(nom, prenom, adresse, ville, code_postal, telephone, false);
@@ -61,6 +64,7 @@ public class Client extends Personne {
 
 	public void setCompteCourant(CompteCourant compteCourant) {
 		this.compteCourant = compteCourant;
+		compteCourant.setClient(this);
 	}
 
 	public CompteEpargne getCompteEpargne() {
@@ -69,6 +73,7 @@ public class Client extends Personne {
 
 	public void setCompteEpargne(CompteEpargne compteEpargne) {
 		this.compteEpargne = compteEpargne;
+		compteEpargne.setClient(this);
 	}
 
 	public CarteBancaire getCarteBancaire() {
@@ -77,6 +82,7 @@ public class Client extends Personne {
 
 	public void setCarteBancaire(CarteBancaire carteBancaire) {
 		this.carteBancaire = carteBancaire;
+		carteBancaire.setClient(this);
 	}
 
 	public boolean isEntreprise() {
@@ -85,6 +91,14 @@ public class Client extends Personne {
 
 	public void setEntreprise(boolean isEntreprise) {
 		this.isEntreprise = isEntreprise;
+	}
+
+	public Conseiller getConseiller() {
+		return conseillerRef.get();
+	}
+
+	public void setConseiller(Conseiller conseiller) {
+		this.conseillerRef = new WeakReference<Conseiller>(conseiller);
 	}
 
 }

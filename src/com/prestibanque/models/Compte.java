@@ -1,11 +1,13 @@
 package com.prestibanque.models;
 
+import java.lang.ref.WeakReference;
 import java.util.Date;
 
 public abstract class Compte {
 	private int numero;
 	private float solde;
 	private Date ouverture;
+	public WeakReference<Client> clientRef;
 
 	public Compte(int numero) {
 		this(numero, 0.0f, new Date());
@@ -39,5 +41,13 @@ public abstract class Compte {
 
 	public void setOuverture(Date ouverture) {
 		this.ouverture = ouverture;
+	}
+
+	public Client getClient() {
+		return clientRef.get();
+	}
+
+	public void setClient(Client client) {
+		this.clientRef = new WeakReference<Client>(client);
 	}
 }

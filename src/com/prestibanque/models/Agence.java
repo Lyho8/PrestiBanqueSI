@@ -35,5 +35,6 @@ public class Agence {
 
 	public void setGerant(Gerant gerant) {
 		this.gerant = gerant;
+		this.gerant.setAgence(this);
 	}
 }

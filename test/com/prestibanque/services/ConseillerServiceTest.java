@@ -28,7 +28,7 @@ public class ConseillerServiceTest {
 		client.setCompteCourant(cc);
 		client.setCompteEpargne(ce);
 		
-		conseiller.getClients().add(client);
+		conseiller.addClient(client);
     }
     
     @After

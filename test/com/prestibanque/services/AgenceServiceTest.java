@@ -32,7 +32,7 @@ public class AgenceServiceTest {
 		agence.setGerant(gerant);
 		
 		conseiller = new Conseiller();
-		gerant.getConseillers().add(conseiller);
+		gerant.addConseiller(conseiller);
 		
 		client = new Client("Golsing", "James", "2 rue du Soleil", "Microsystems", 123456, "01-555-1487");
 		cc = new CompteCourant(1, 45_126, new Date());
@@ -41,7 +41,7 @@ public class AgenceServiceTest {
 		client.setCompteCourant(cc);
 		client.setCompteEpargne(ce);
 		
-		conseiller.getClients().add(client);
+		conseiller.addClient(client);
 	}
 
 	@After

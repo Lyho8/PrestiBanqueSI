@@ -16,13 +16,13 @@ public class Launcher {
 		a.setGerant(g);
 		
 		Conseiller c = new Conseiller();
-		g.getConseillers().add(c);
+		g.addConseiller(c);
 		
 		// création d'un client qui a -5001€ sur un de ses comptes et 500€ sur l'autre
 		Client client = new Client("Durand", "Jean", "2 rue des billes", "Paris", 75099, "+33.1.78.15.99.01.11");
 		client.setCompteCourant(new CompteCourant(1, -5001, new Date()));
 		client.setCompteEpargne(new CompteEpargne(1, 500, new Date()));
-		c.getClients().add(client);
+		c.addClient(client);
 		
 		// audit de l'agence qui renvoie "false" car le client a un compte à découvert de plus de 5 000€
 		AgenceService aServ = new AgenceService(a);
