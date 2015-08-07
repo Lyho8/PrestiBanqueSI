@@ -5,6 +5,10 @@ import java.util.ArrayList;
 public class Gerant extends Personne {
 	private ArrayList<Conseiller> conseillers = new ArrayList<>();
 
+	public Gerant() {
+		super("Boss", "Big");
+	}
+
 	public ArrayList<Conseiller> getConseillers() {
 		return conseillers;
 	}

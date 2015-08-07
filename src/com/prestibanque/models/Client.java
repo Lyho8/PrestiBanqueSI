@@ -1,8 +1,6 @@
 package com.prestibanque.models;
 
 public class Client extends Personne {
-	private String nom;
-	private String prenom;
 	private String adresse;
 	private String ville;
 	private int code_postal;
@@ -17,30 +15,12 @@ public class Client extends Personne {
 	}
 	
 	public Client(String nom, String prenom, String adresse, String ville, int code_postal, String telephone, boolean isEntreprise) {
-		super();
-		this.nom = nom;
-		this.prenom = prenom;
+		super(nom, prenom);
 		this.adresse = adresse;
 		this.ville = ville;
 		this.code_postal = code_postal;
 		this.telephone = telephone;
 		this.isEntreprise = isEntreprise;
-	}
-
-	public String getNom() {
-		return nom;
-	}
-
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
-
-	public String getPrenom() {
-		return prenom;
-	}
-
-	public void setPrenom(String prenom) {
-		this.prenom = prenom;
 	}
 
 	public String getAdresse() {
