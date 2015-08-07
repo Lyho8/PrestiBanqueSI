@@ -18,7 +18,7 @@ public class ConseillerServiceTest {
 	private CompteEpargne ce;
 	
     @Before
-    public void setUp() {
+    public void setUp() throws Exception {
 		conseiller = new Conseiller();
 		service = new ConseillerService(conseiller);
 		client = new Client("Golsing", "James", "2 rue du Soleil", "Microsystems", 123456, "01-555-1487");
@@ -32,13 +32,18 @@ public class ConseillerServiceTest {
     }
     
     @After
-    public void tearUp() {
+    public void tearDown() throws Exception {
     	service = null;
     	conseiller = null;
     	client = null;
     	cc = null;
     	ce = null;
     }
+
+	@Test
+	public void testGetConseiller() {
+		assertTrue(service.getConseiller() == conseiller);
+	}
 
 	@Test
 	public void testTransfertCourantVersEpargne() {
